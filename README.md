@@ -137,3 +137,19 @@ Length of Membership	61.279097
 Este projeto demonstra como técnicas de **análise de dados e regressão linear** podem ser utilizadas para identificar fatores que impactam o comportamento de consumo dos clientes.
 
 A análise evidencia que **retenção de clientes e engajamento no aplicativo** são fatores estratégicos para o crescimento do faturamento, reforçando o papel da **ciência de dados na tomada de decisões orientadas por dados**.
+
+---
+
+## Como Executar o Projeto
+
+1. Clone este repositório
+
+git clone [[[https://github.com/Anderson1999DC/Regressao-Linear-em-dados-de-e-commerce.git](https://github.com/Anderson1999DC/Regressao-Linear-em-dados-de-e-commerce)
+
+2. Instale as dependências
+
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
+
+3. Abra o notebook
+
+
