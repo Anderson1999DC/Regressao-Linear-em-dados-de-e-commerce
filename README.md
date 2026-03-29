@@ -149,7 +149,7 @@ flowchart TD
 
 ### Tempo no Aplicativo × Tempo de Associação
 
-![Time on App x Membership](assets/Time_on_App_x_Membership.png)
+![Time on App x Membership](assets/Time_on_App_×_Membership.png)
 
 > Padrão hexagonal mostrando a concentração dos clientes — a maioria usa o app entre 11–13 min e tem entre 2–5 anos de associação.
 
