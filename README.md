@@ -131,7 +131,7 @@ flowchart TD
 
 ---
 
-### Time on Website × Valor Gasto Anual
+### Tempo no website × Valor Gasto Anual
 
 ![Time on Website x Gasto](assets/Time_on_Website_x_Gasto.png)
 
@@ -139,7 +139,7 @@ flowchart TD
 
 ---
 
-### Time on App × Valor Gasto Anual
+### Tempo no Aplicativo × Valor Gasto Anual
 
 ![Time on App x Gasto](assets/time_on_app_x_gasto.png)
 
@@ -147,7 +147,7 @@ flowchart TD
 
 ---
 
-### Time on App × Tempo de Associação
+### Tempo no Aplicativo × Tempo de Associação
 
 ![Time on App x Membership](assets/Time_on_App_x_Membership.png)
 
