@@ -1,22 +1,18 @@
-<div align="center">
+# Regressão Linear em Dados de E-Commerce
 
-# Regressão Linear em Dados de E-commerce
-### EDA · Regressão Linear · Análise de Coeficientes · Decisão Estratégica
+### EDA · Regressão Linear · Interpretação de Coeficientes · Decisão de Negócio
 
-<br>
+&nbsp;
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.x-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
-[![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logo=python&logoColor=white)](https://seaborn.pydata.org/)
-[![Status](https://img.shields.io/badge/Status-Concluído-28a745?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Concluído-28a745?style=for-the-badge)](https://github.com/Anderson1999DC/Regressao-Linear-em-dados-de-e-commerce)
 
-<br>
-
-> Aplicação de Regressão Linear para prever o valor anual gasto por clientes em uma plataforma
-> de e-commerce, com foco em responder uma pergunta estratégica de negócio: **app ou website?**
-
-</div>
+&nbsp;
+> Modelo de Regressão Linear para identificar quais canais e comportamentos mais influenciam
+> o gasto anual dos clientes de uma empresa de moda online apoiando a decisão de investimento
+> entre app mobile e website.
 
 ---
 
@@ -28,8 +24,8 @@
 - [Tecnologias](#tecnologias-utilizadas)
 - [Dataset](#dataset)
 - [Análise Exploratória](#análise-exploratória)
-- [Modelagem e Resultados](#modelagem-e-resultados)
-- [Conclusão Estratégica](#conclusão-estratégica)
+- [Resultados do Modelo](#resultados-do-modelo)
+- [Decisão de Negócio](#decisão-de-negócio)
 - [Estrutura do Repositório](#estrutura-do-repositório)
 - [Autor](#autor)
 
@@ -37,27 +33,25 @@
 
 ## Contexto
 
-Uma empresa de e-commerce com sede em Nova York vende roupas online e também oferece sessões de consultoria de estilo presencialmente. Os clientes podem interagir com a empresa tanto pelo **aplicativo mobile** quanto pelo **website**.
+Projeto de Regressão Linear aplicado ao e-commerce de moda. Uma empresa de Nova York vende roupas online e oferece sessões de consultoria presencial de estilo. A gestão precisa decidir onde concentrar os investimentos: no **aplicativo mobile** ou no **website**. O modelo identifica quais fatores mais impactam o gasto anual dos clientes.
 
-A empresa precisa tomar uma decisão estratégica:
-
-> **Vale mais a pena investir no aplicativo mobile ou no website para aumentar o faturamento?**
-
-Atuei como Cientista de Dados para responder essa pergunta com base em dados reais de comportamento dos clientes.
-
-| Canal | Situação Observada |
+| Etapa | Descrição |
 |---|---|
-| **Aplicativo Mobile** | Forte correlação com o valor gasto |
-| **Website** | Correlação praticamente nula com o valor gasto |
+| **EDA** | Análise de correlação entre canais de acesso e gasto anual |
+| **Modelagem** | Regressão Linear com 4 features numéricas |
+| **Avaliação** | MAE, MSE, RMSE, R² e análise de resíduos |
+| **Decisão** | Interpretação dos coeficientes para apoio estratégico |
+
+> **Base de dados fictícia** criada para fins educacionais.
 
 ---
 
 ## Objetivos
 
-- Explorar as relações entre comportamento dos clientes e valor gasto anualmente
-- Identificar quais variáveis mais influenciam o faturamento
-- Construir e avaliar um modelo de Regressão Linear para previsão do gasto anual
-- Traduzir os coeficientes do modelo em recomendações de negócio
+- Construir um modelo de regressão para prever o gasto anual dos clientes
+- Identificar quais variáveis mais influenciam o volume de compras
+- Interpretar os coeficientes do modelo para apoiar a decisão de negócio
+- Exportar o modelo treinado para deploy via API
 
 ---
 
@@ -65,21 +59,22 @@ Atuei como Cientista de Dados para responder essa pergunta com base em dados rea
 
 ```mermaid
 flowchart TD
-    A([ecommerce-customers.csv\n500 clientes · 8 colunas]) --> B[EDA\nJointplots · Pairplot · LM Plot]
-    B --> C[Preparação\nSeleção de features · Train/Test Split]
-    C --> D[Regressão Linear\nScikit-learn]
-    D --> E[Avaliação\nMAE · MSE · RMSE · Resíduos]
-    E --> F([Decisão Estratégica\nApp vs Website])
-
-    B --> B1[/"Length of Membership\nfeature mais correlacionada"/]
-    D --> D1[/"70% treino · 30% teste\nRMSE: 8.93"/]
+    A([Dataset\nE-commerce\n500 clientes]) --> B[EDA\nCorrelações · Jointplots · Pairplot]
+    B --> C[Seleção de Features\n4 variáveis numéricas]
+    C --> D[Split Treino/Teste\n70% / 30%]
+    D --> E[Regressão Linear]
+    E --> F[Avaliação\nMAE · RMSE · R² · Resíduos]
+    F --> G[Interpretação\nCoeficientes → Decisão]
+    G --> H([Insight\nApp > Website\nFidelização é chave])
 
     style A fill:#4A90D9,color:#fff,stroke:none
-    style F fill:#28a745,color:#fff,stroke:none
+    style H fill:#28a745,color:#fff,stroke:none
     style B fill:#6C757D,color:#fff,stroke:none
     style C fill:#6C757D,color:#fff,stroke:none
     style D fill:#6C757D,color:#fff,stroke:none
     style E fill:#6C757D,color:#fff,stroke:none
+    style F fill:#6C757D,color:#fff,stroke:none
+    style G fill:#6C757D,color:#fff,stroke:none
 ```
 
 ---
@@ -90,136 +85,89 @@ flowchart TD
 |---|---|
 | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) | Linguagem principal |
 | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) | Manipulação e análise dos dados |
-| ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) | Cálculos numéricos e métricas |
-| ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white) | Scatter plot de avaliação |
-| ![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=flat-square&logo=python&logoColor=white) | Jointplots, Pairplot e análise de resíduos |
+| ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) | Operações numéricas |
 | ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) | Modelo de Regressão Linear e métricas |
+| ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat-square&logo=python&logoColor=white) | Scatter plots e visualizações |
+| ![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=flat-square&logo=python&logoColor=white) | Jointplots, pairplot e lmplot |
 
 ---
 
 ## Dataset
 
-**Fonte:** `ecommerce-customers.csv` — Dataset público de comportamento de clientes
+**Fonte:** Dataset fictício de e-commerce criado para fins educacionais  
 **Uso:** Exclusivamente educacional
 
 | Característica | Detalhe |
 |---|---|
 | Volume | 500 clientes |
-| Colunas totais | 8 |
-| Features usadas no modelo | 4 |
-| Variável alvo | `Yearly Amount Spent` |
+| Variável target | `Yearly Amount Spent` (USD) |
 
-**Variáveis do modelo:**
+**Variáveis disponíveis:**
 
-| Feature | Descrição | Média |
-|---|---|---|
-| `Avg. Session Length` | Duração média das sessões de consultoria | 33,05 min |
-| `Time on App` | Tempo médio no aplicativo mobile | 12,05 min |
-| `Time on Website` | Tempo médio no website | 37,06 min |
-| `Length of Membership` | Tempo de associação do cliente | 3,53 anos |
-| `Yearly Amount Spent` | **Variável alvo** — valor gasto no ano | **US$ 499,31** |
+| Variável | Descrição |
+|---|---|
+| `Avg. Session Length` | Tempo médio de sessão de consultoria na loja (min) |
+| `Time on App` | Tempo médio no aplicativo mobile (min) |
+| `Time on Website` | Tempo médio no website (min) |
+| `Length of Membership` | Tempo de associação como cliente (anos) |
+| `Yearly Amount Spent` | **Target** — gasto anual do cliente (USD) |
 
 ---
 
 ## Análise Exploratória
 
-### Visão Geral das Relações entre Variáveis
+A EDA revelou correlações importantes entre as variáveis e o gasto anual dos clientes:
 
-![Pairplot das Variáveis](assets/pairplot_variaveis.png)
-
-> A análise do pairplot revela claramente que **`Length of Membership`** é a feature com maior correlação visual com o valor gasto anual, seguida por **`Time on App`**. `Time on Website` praticamente não apresenta padrão linear.
-
----
-
-### Tempo no website × Valor Gasto Anual
-
-![Time on Website x Gasto](assets/Time_on_Website_x_Gasto.png)
-
-> Distribuição dispersa sem tendência linear — o tempo no website **não tem relação significativa** com o quanto o cliente gasta.
+- **Time on App** apresenta correlação visual mais forte com `Yearly Amount Spent` do que `Time on Website`
+- **Length of Membership** é a variável com correlação mais clara clientes mais antigos gastam significativamente mais
+- O **pairplot** confirma que o tempo no site tem impacto praticamente nulo no gasto
 
 ---
 
-### Tempo no Aplicativo × Valor Gasto Anual
+## Resultados do Modelo
 
-![Time on App x Gasto](assets/time_on_app_x_gasto.png)
+### Valores Reais vs Previstos
 
-> Correlação positiva moderada visível — clientes que passam mais tempo no app tendem a gastar mais.
+![Real vs Previsto](assets/real_vs_previsto_ecommerce.png)
 
----
-
-### Tempo no Aplicativo × Tempo de Associação
-
-![Time on App x Membership](assets/Time_on_App_×_Membership.png)
-
-> Padrão hexagonal mostrando a concentração dos clientes — a maioria usa o app entre 11–13 min e tem entre 2–5 anos de associação.
-
----
-
-### Relação Linear — Tempo de Associação × Valor Gasto
-
-![LM Plot Membership x Gasto](assets/lmplot_membership_gasto.png)
-
-> **Relação linear mais forte do dataset.** Clientes com mais tempo de associação gastam consistentemente mais — o que aponta para fidelização como principal alavanca de receita.
-
----
-
-## Modelagem e Resultados
-
-### Performance do Modelo — Dados de Teste
-
-### Valores Reais vs. Preditos
-
-![Scatter Real vs Predito](assets/scatter_real_vs_predito.png)
-
-> Pontos concentrados próximos à diagonal, confirmando que o modelo captura bem a variação do gasto. Sem padrões sistemáticos de erro.
+> Pontos próximos à linha diagonal indicam boa aderência do modelo a Regressão Linear capturou bem a relação entre as variáveis.
 
 ### Análise de Resíduos
 
-![Histograma dos Resíduos](assets/histograma_residuos.png)
+![Resíduos](assets/residuos_ecommerce.png)
 
-> Resíduos com distribuição aproximadamente normal e centrada em zero — sem viés sistemático, confirmando que a Regressão Linear é adequada para esse problema.
+> Resíduos com distribuição aproximadamente normal em torno de zero confirmando que os pressupostos da Regressão Linear são atendidos e o modelo não tem viés sistemático.
+
+### Coeficientes do Modelo
+
+![Coeficientes](assets/coeficientes_ecommerce.png)
+
+| Variável | Coeficiente | Interpretação |
+|---|---|---|
+| **Length of Membership** | **~$61** | **1 ano a mais de associação → +$61/ano** |
+| **Time on App** | **~$39** | **1 min a mais no app → +$39/ano** |
+| Avg. Session Length | ~$26 | 1 min a mais na sessão → +$26/ano |
+| Time on Website | ~$0.19 | impacto praticamente nulo |
 
 ### Métricas de Avaliação
 
 | Métrica | Valor |
 |---|---|
-| MAE | **US$ 7,23** |
-| MSE | 79,81 |
-| **RMSE** | **US$ 8,93** |
-
-> Com RMSE de apenas **US$ 8,93** em um valor médio de **US$ 499**, o modelo apresenta erro relativo de menos de 2% — excelente desempenho para uma Regressão Linear simples.
-
-### Coeficientes do Modelo
-
-| Feature | Coeficiente | Interpretação |
-|---|---|---|
-| `Length of Membership` | **+61,28** | Cada ano a mais de associação → +US$ 61 gastos/ano |
-| `Time on App` | **+38,59** | Cada minuto a mais no app → +US$ 38,59 gastos/ano |
-| `Avg. Session Length` | +25,98 | Cada minuto a mais em consultoria → +US$ 25,98 gastos/ano |
-| `Time on Website` | +0,19 | Impacto praticamente nulo no valor gasto |
+| **R²** | **alto** |
+| MAE | baixo |
+| RMSE | baixo |
 
 ---
 
-## Conclusão Estratégica
+## Decisão de Negócio
 
-A análise dos coeficientes responde diretamente a pergunta de negócio:
+A interpretação dos coeficientes revela dois insights estratégicos claros:
 
-> **O aplicativo mobile tem impacto ~203x maior no faturamento do que o website** (coef. 38,59 vs. 0,19).
+**1. Fidelização é a principal alavanca de receita**  
+`Length of Membership` tem o maior coeficiente cada ano adicional de fidelidade gera em média $61 a mais no gasto anual. A empresa deve priorizar **programas de fidelização e retenção** antes de qualquer investimento em canal.
 
-No entanto, a variável com maior influência é **`Length of Membership`** (coef. 61,28), o que revela que **fidelizar clientes é mais lucrativo do que qualquer canal digital**.
-
-A empresa tem duas estratégias possíveis:
-
-- **Investir no App** — capitalizar em algo que já funciona e aumentar o engajamento mobile
-- **Investir no Website** — tentar desenvolver um canal que hoje está subutilizado e pode crescer
-
-Em ambos os casos, **programas de fidelização** devem ser a prioridade, dado o peso do tempo de associação no modelo.
-
-### Próximos Passos Sugeridos
-
-- Testar modelos não-lineares (Random Forest, XGBoost) para verificar se capturam mais padrões
-- Coletar dados de frequência de compra e ticket médio por sessão
-- Implementar análise de segmentação (clustering) para personalizar estratégias por perfil de cliente
+**2. App mobile supera o website**  
+O coeficiente do `Time on App` (~$39) é muito superior ao do `Time on Website` (~$0.19). Investir em melhorias no aplicativo tem retorno claramente mensurável, enquanto o website apresenta impacto desprezível no gasto dos clientes.
 
 ---
 
@@ -228,19 +176,17 @@ Em ambos os casos, **programas de fidelização** devem ser a prioridade, dado o
 ```
 Regressao-Linear-em-dados-de-e-commerce/
 │
-├── 📁 assets/                              # Gráficos gerados na análise
-│   ├── pairplot_variaveis.png
-│   ├── Time_on_Website_x_Gasto.png
-│   ├── time_on_app_x_gasto.png
-│   ├── Time_on_App_x_Membership.png
-│   ├── lmplot_membership_gasto.png
-│   ├── scatter_real_vs_predito.png
-│   └── histograma_residuos.png
+├──  assets/                                          # Gráficos gerados na análise
+│   ├── coeficientes_ecommerce.png
+│   ├── real_vs_previsto_ecommerce.png
+│   └── residuos_ecommerce.png
 │
-├── 📓 regressao_linear_em_dados_de_ecommerce.ipynb  # Notebook completo
-├── 📄 ecommerce-customers.csv                       # Dataset
-├── 📄 requirements.txt                              # Dependências do projeto
-└── 📄 README.md                                     # Documentação do projeto
+├──  regressao_linear_em_dados_de_ecommerce_restrutured.ipynb  # Notebook completo
+├──  ecommerce-customers.csv                          # Dataset original
+├──  modelo_ecommerce.pkl                             # Modelo treinado
+├──  colunas_ecommerce.pkl                            # Features esperadas pela API
+├──  requirements.txt                                 # Dependências do projeto
+└──  README.md                                        # Documentação do projeto
 ```
 
 ---
