@@ -167,7 +167,7 @@ A interpretação dos coeficientes revela dois insights estratégicos claros:
 `Length of Membership` tem o maior coeficiente cada ano adicional de fidelidade gera em média $61 a mais no gasto anual. A empresa deve priorizar **programas de fidelização e retenção** antes de qualquer investimento em canal.
 
 **2. App mobile supera o website**  
-O coeficiente do `Time on App` (~$39) é muito superior ao do `Time on Website` (~$0.19). Investir em melhorias no aplicativo tem retorno claramente mensurável, enquanto o website apresenta impacto desprezível no gasto dos clientes.
+O coeficiente do `Time on App` ~$39 é muito superior ao do `Time on Website` ~$0.19. Investir em melhorias no aplicativo tem retorno claramente mensurável, enquanto o website apresenta impacto desprezível no gasto dos clientes.
 
 ---
 
